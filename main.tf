@@ -1,5 +1,5 @@
-module "aws_waf" {
-  source = "./test"
+module "aws_waf_web_acl" {
+  source = "./webacl"
 
   aws_region           = "us-east-1"
   web_acl_name         = "my-wafv2-web-acl"
