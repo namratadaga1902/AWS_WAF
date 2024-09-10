@@ -47,5 +47,14 @@ resource "aws_wafv2_web_acl" "this" {
 
 # CloudWatch Log Group for WAF Logging
 resource "aws_cloudwatch_log_group" "waf_log_group" {
-  name = var.log_group_name
+  name = "aws-waf-logs-${var.log_group_name}"
+}
+
+# Enable WAFv2 Logging
+resource "aws_wafv2_web_acl_logging_configuration" "this" {
+  resource_arn = aws_wafv2_web_acl.this.arn
+
+  log_destination_configs = [
+    aws_cloudwatch_log_group.waf_log_group.arn  # Correctly reference the ARN
+  ]
 }
