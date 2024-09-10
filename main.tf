@@ -5,7 +5,7 @@ module "aws_waf" {
   web_acl_name         = "my-wafv2-web-acl"
   web_acl_scope        = "REGIONAL"
   metric_name          = "my-waf-metric"
-  log_group_name       = "/aws/waf/my-waf-logs"
+  log_group_name       = "test"
 
   rules = [
     {
